@@ -28,6 +28,6 @@ for j in range(len(heights)):
 
 percentile = ((len(heights) - position) / len(heights)) * 100
 
-print(f"My height is at the {percentile}th percentile.")
+print(f"My height is at the {round(percentile)}th percentile.")
 
 
