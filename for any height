@@ -1,0 +1,40 @@
+import numpy as np
+from scipy import stats
+
+data = np.loadtxt("SOCR-HeightWeight.csv", delimiter = ",", dtype = str)
+
+heights = []
+weights = []
+
+heightInput = 0
+
+for i in range(len(data)):
+    if i != 0: #skips the header row
+
+        heightValue = float(data[i][1])
+        heights.append(heightValue)
+
+        weightValue = float(data[i][1])
+        weights.append(weightValue)
+
+heights.sort(reverse = True)
+
+heightInput = input("Enter a height.")
+
+while True:
+    if heightInput is not float:
+        heightInput = input("Please enter a valid height.")
+
+    else:
+        break
+
+for j in range(len(heights)):
+    if float(heightInput) > heights[j]:
+        position = j
+        break
+
+percentile = ((len(heights) - position) / len(heights)) * 100
+
+
+print(f"The selected height is at the {round(percentile)}th percentile.")
+
